@@ -12,7 +12,6 @@ app.use(cors());
 app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.dawimtn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-console.log(uri);
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -37,10 +36,7 @@ async function run() {
       const result = await usersCollection.insertOne(user);
       res.send(result);
     });
-
-    
   } finally {
-    
   }
 }
 run().catch(console.dir);
